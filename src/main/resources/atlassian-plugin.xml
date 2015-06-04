@@ -1,0 +1,19 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    </plugin-info>
+
+    <component-import key="commitService" interface="com.atlassian.stash.commit.CommitService"/>
+    <component-import key="gitCmdBuilderFactory" interface="com.atlassian.stash.scm.git.GitCommandBuilderFactory"/>
+
+    <repository-hook key="enforceCommitMessageHook" name="Enforce Commit Message Hook" class="com.atlassian.stash.plugin.enforcecommit.EnforceCommitHook">
+        <description>Restricting pushing of commits that don't contain the required commit message.</description>
+        <config-form key="fileSizeHookConfig">
+            <view>stash.hook.enforcecommit.formContents</view>
+            <directory location="/static/"/>
+        </config-form>
+    </repository-hook>
+
+</atlassian-plugin>

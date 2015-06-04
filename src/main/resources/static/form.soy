@@ -1,0 +1,24 @@
+{namespace stash.hook.enforcecommit}
+
+/**
+ * @param config
+ * @param? errors
+ */
+{template .formContents}
+    {call aui.form.textField}
+        {param id: 'pattern' /}
+        {param value: $config['pattern'] /}
+        {param isRequired: false /}
+        {param labelContent: 'Commit Regex' /}
+        {param descriptionText: 'Pattern ' /}
+        {param errorTexts: $errors ? $errors['pattern'] : null /}
+    {/call}
+    {call aui.form.textareaField}
+        {param id: 'message' /}
+        {param value: $config['message'] /}
+        {param isRequired: false /}
+        {param labelContent: 'Message' /}
+        {param descriptionText: 'message ' /}
+        {param errorTexts: $errors ? $errors['message'] : null /}
+    {/call}
+{/template}
